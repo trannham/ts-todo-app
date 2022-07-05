@@ -1,15 +1,12 @@
 import React, { ChangeEvent, KeyboardEvent, useState } from 'react';
 
-import { Task, TasksProps } from '../types';
+import useTaskStore from '../hooks/use-task-store';
+import { Task } from '../types';
 
-type Props = TasksProps & {};
+type Props = {};
 
-const ListScreen: React.FC<Props> = ({
-  tasks,
-  addTask,
-  setTasks,
-  updateTaskCompletion,
-}) => {
+const ListScreen: React.FC<Props> = () => {
+  const { tasks, addTask, setTasks, updateTaskCompletion } = useTaskStore();
   const [newTaskLabel, setNewTaskLabel] = useState('');
 
   const handleNewTaskLabelChange = (e: ChangeEvent<HTMLInputElement>) => {
